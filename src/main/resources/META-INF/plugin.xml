@@ -1,0 +1,155 @@
+<idea-plugin>
+    <id>test</id>
+    <name>test</name>
+    <vendor email="powerful@postech.ac.kr" url="http://csed332.postech.ac.kr">team1</vendor>
+
+    <description><![CDATA[
+    Enter short description hi for your plugin here.<br>
+    <em>most HTML tags may be not used</em>
+    ]]></description>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    <depends>com.intellij.modules.lang</depends>
+    -->
+
+    <extensions defaultExtensionNs="com.intellij">
+        <intentionAction>
+            <className>team1.plugin.ui.SplitTemporaryVariableAction</className>
+            <category>Team1 Refactor</category>
+            <descriptionDirectoryName>SplitTemporaryVariableAction</descriptionDirectoryName>
+        </intentionAction>
+        <intentionAction>
+            <className>team1.plugin.ui.PullUpConstructorBodyAction</className>
+            <category>Team1 Refactor</category>
+            <descriptionDirectoryName>PullUpConstructorBodyAction</descriptionDirectoryName>
+        </intentionAction>
+        <intentionAction>
+            <className>team1.plugin.ui.CollapseHierarchyAction</className>
+            <category>Team1 Refactor</category>
+            <descriptionDirectoryName>CollapseHierarchyAction</descriptionDirectoryName>
+        </intentionAction>
+        <intentionAction>
+            <className>team1.plugin.ui.EncapsulateCollectionAction</className>
+            <category>Team1 Refactor</category>
+            <descriptionDirectoryName>EncapsulateCollectionAction</descriptionDirectoryName>
+        </intentionAction>
+        <intentionAction>
+            <className>team1.plugin.ui.RemoveAssignmentsToParametersAction</className>
+            <category>Team1 Refactor</category>
+            <descriptionDirectoryName>RemoveAssignmentsToParametersAction</descriptionDirectoryName>
+        </intentionAction>
+        <intentionAction>
+            <className>team1.plugin.ui.ReplaceMethodWithMethodObjectAction</className>
+            <category>Team1 Refactor</category>
+            <descriptionDirectoryName>ReplaceMethodWithMethodObjectAction</descriptionDirectoryName>
+        </intentionAction>
+        <intentionAction>
+            <className>team1.plugin.ui.HideMethodAction</className>
+            <category>Team1 Refactor</category>
+            <descriptionDirectoryName>HideMethodAction</descriptionDirectoryName>
+        </intentionAction>
+        <intentionAction>
+            <className>team1.plugin.ui.FormTemplateMethodAction</className>
+            <category>Team1 Refactor</category>
+            <descriptionDirectoryName>FormTemplateMethodAction</descriptionDirectoryName>
+        </intentionAction>
+        <intentionAction>
+            <className>team1.plugin.ui.PreserveWholeObjectAction</className>
+            <category>Team1 Refactor</category>
+            <descriptionDirectoryName>PreserveWholeObjectAction</descriptionDirectoryName>
+        </intentionAction>
+        <intentionAction>
+            <className>team1.plugin.ui.SeparateQueryFromModifierAction</className>
+            <category>Team1 Refactor</category>
+            <descriptionDirectoryName>SeparateQueryFromModifierAction</descriptionDirectoryName>
+        </intentionAction>
+        <intentionAction>
+            <className>team1.plugin.ui.ConsolidateDuplicateConditionalFragmentsAction</className>
+            <category>Team1 Refactor</category>
+            <descriptionDirectoryName>ConsolidateDuplicateConditionalFragmentsAction</descriptionDirectoryName>
+        </intentionAction>
+        <intentionAction>
+            <className>team1.plugin.ui.ReplaceConditionalWithPolymorphismAction</className>
+            <category>Team1 Refactor</category>
+            <descriptionDirectoryName>ReplaceConditionalWithPolymorphismAction</descriptionDirectoryName>
+        </intentionAction>
+        <intentionAction>
+            <className>team1.plugin.ui.ReplaceSubclassWithFieldsAction</className>
+            <category>Team1 Refactor</category>
+            <descriptionDirectoryName>ReplaceSubclassWithFieldsAction</descriptionDirectoryName>
+        </intentionAction>
+        <intentionAction>
+            <className>team1.plugin.ui.ReplaceExceptionWithTestAction</className>
+            <category>Team1 Refactor</category>
+            <descriptionDirectoryName>ReplaceExceptionWithTestAction</descriptionDirectoryName>
+        </intentionAction>
+    </extensions>
+
+    <actions>
+        <group id="Team1.RefactoringPlugin.RefactorMenu" text="Team1Refactor" description="Refactor menu" popup="true">
+            <add-to-group group-id="RefactoringMenu" anchor="first"/>
+            <add-to-group group-id="MainMenu" anchor="last"/>
+            <action id="Team1.RefactoringPlugin.SplitTemporaryVariable"
+                    class="team1.plugin.ui.SplitTemporaryVariableAction"
+                    text="Split Temporary Variable"
+                    description="When you have a local variable that’s used to store various intermediate values inside a method (except for cycle variables), using different variables for different values. Each variable should be responsible for only one particular thing.">
+                <!--<keyboard-shortcut first-keystroke="" keymap=""></keyboard-shortcut>-->
+                <!--<mouse-shortcut keymap="" keystroke=""></mouse-shortcut>-->
+            </action>
+            <action id="Team1.RefactoringPlugin.PullUpConstructorBody"
+                    class="team1.plugin.ui.PullUpConstructorBodyAction"
+                    text="Pull Up Constructor Body"
+                    description="When your subclasses have constructors with code that’s mostly identical, creating a superclass constructor and move the code that’s the same in the subclasses to it. Call the superclass constructor in the subclass constructors."/>
+            <action id="Team1.RefactoringPlugin.CollapseHierarchy"
+                    class="team1.plugin.ui.CollapseHierarchyAction"
+                    text="Collapse Hierarchy"
+                    description="When you have a class hierarchy in which a subclass is practically the same as its superclass, merging the subclass and superclass."/>
+            <action id="Team1.RefactoringPlugin.EncapsulateCollection"
+                    class="team1.plugin.ui.EncapsulateCollectionAction"
+                    text="Encapsulate Collection"
+                    description="When a class contains a collection field and a simple getter and setter for working with the collection."/>
+            <action id="Team1.RefactoringPlugin.RemoveAssignmentsToParameters"
+                    class="team1.plugin.ui.RemoveAssignmentsToParametersAction"
+                    text="Remove Assignments to Parameters"
+                    description="When some value is assigned to a parameter inside method’s body, using a local variable instead of a parameter."/>
+            <action id="Team1.RefactoringPlugin.ReplaceMethodWithMethodObject"
+                    class="team1.plugin.ui.ReplaceMethodWithMethodObjectAction"
+                    text="Replace Method with Method Object"
+                    description="When you have a long method in which the local variables are so intertwined that you can’t apply Extract Method, transforming the method into a separate class so that the local variables become fields of the class. Then you can split the method into several methods within the same class."/>
+            <action id="Team1.RefactoringPlugin.HideMethod"
+                    class="team1.plugin.ui.HideMethodAction"
+                    text="Hide Method"
+                    description="When a method isn’t used by other classes or is used only inside its own class hierarchy, making the method private or protected."/>
+            <action id="Team1.RefactoringPlugin.FormTemplateMethod"
+                    class="team1.plugin.ui.FormTemplateMethodAction"
+                    text="Form Template Method"
+                    description="When your subclasses implement algorithms that contain similar steps in the same order, moving the algorithm structure and identical steps to a superclass, and leave implementation of the different steps in the subclasses."/>
+            <action id="Team1.RefactoringPlugin.PreserveWholeObject"
+                    class="team1.plugin.ui.PreserveWholeObjectAction"
+                    text="Preserve Whole Object"
+                    description="When you get several values from an object and then pass them as parameters to a method, try passing the whole object"/>
+            <action id="Team1.RefactoringPlugin.SeparateQueryFromModifier"
+                    class="team1.plugin.ui.SeparateQueryFromModifierAction"
+                    text="Separate Query from Modifier"
+                    description="When you have a method that returns a value but also changes something inside an object, split the method into two separate methods. As you would expect, one of them should return the value and the other one modifies the object."/>
+            <action id="Team1.RefactoringPlugin.ConsolidateDuplicateConditionalFragments"
+                    class="team1.plugin.ui.ConsolidateDuplicateConditionalFragmentsAction"
+                    text="Consolidate Duplicate Conditional Fragments"
+                    description="When identical code can be found in all branches of a conditional, move the code outside of the conditional."/>
+            <action id="Team1.RefactoringPlugin.ReplaceConditionalWithPolymorphism"
+                    class="team1.plugin.ui.ReplaceConditionalWithPolymorphismAction"
+                    text="Replace Conditional with Polymorphism"
+                    description="When you have a conditional that performs various actions depending on object type or properties, create subclasses matching the branches of the conditional. In them, create a shared method and move code from the corresponding branch of the conditional to it. Then replace the conditional with the relevant method call. The result is that the proper implementation will be attained via polymorphism depending on the object class."/>
+            <action id="Team1.RefactoringPlugin.ReplaceSubclassWithFields"
+                    class="team1.plugin.ui.ReplaceSubclassWithFieldsAction"
+                    text="Replace Subclass with Fields"
+                    description="When you have subclasses differing only in their (constant-returning) methods, replace the methods with fields in the parent class and delete the subclasses."/>
+            <action id="Team1.RefactoringPlugin.ReplaceExceptionWithTest"
+                    class="team1.plugin.ui.ReplaceExceptionWithTestAction"
+                    text="Replace Exception with Test"
+                    description="When you have exceptions that can be replaced by simple test, replace the exceptions with a condition test."/>
+        </group>
+    </actions>
+</idea-plugin>
